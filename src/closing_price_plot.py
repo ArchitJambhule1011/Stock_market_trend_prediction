@@ -31,7 +31,7 @@ def close_price(user_input, start_date, end_date):
 
 
     #ML model
-    model = tensorflow.keras.models.load_model('E:\Github Projects\Stock market prediction\MODEL_SAVE.h5', compile=False)
+    model = tensorflow.keras.models.load_model('E:\Github Projects\Stock market prediction\models\close_model.h5', compile=False)
     model.compile(optimizer='adam', loss='mean_squared_error')
 
     past_100 = data_training.tail(100)
@@ -59,7 +59,7 @@ def close_price(user_input, start_date, end_date):
 
     st.subheader('Predictions')
     fig_2 = plt.figure(figsize = (12,6))
-    plt.plot(y_test, 'b', label = 'Origanal Closing price')
+    plt.plot(y_test, 'b', label = 'Closing price')
     plt.plot(y_pred, 'r', label = 'Predicted Closing Price')
     plt.xlabel('Time')
     plt.ylabel('Price')
